@@ -1,9 +1,9 @@
 class Request < ApplicationRecord
   STATUS = ['accepted', 'rejected', 'pending']
   validates :content, presence: true
-  validates :status, default: 'pending', inclusion: { in: STATUS }
+  validates :status, inclusion: { in: STATUS }
 
-
-
+  belongs_to :dog
+  belongs_to :user
 
 end

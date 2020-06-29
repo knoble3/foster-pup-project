@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_090422) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "pending"
     t.string "content"
     t.date "start_date"
     t.date "end_date"
