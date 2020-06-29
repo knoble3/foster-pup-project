@@ -1,0 +1,14 @@
+<div class="container new-form">
+  <h1>Add a Pup to be Fostered</h1>
+  <div class="add_form">
+  <%= simple_form_for(@dog) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :breed %>
+  <%= f.input :age %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Finish! 👌🏽", class: "btn btn-info" %>
+  <% end %>
+  </div>
+
+</div>
