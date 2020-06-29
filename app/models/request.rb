@@ -3,4 +3,7 @@ class Request < ApplicationRecord
   validates :content, presence: true
   validates :status, inclusion: { in: STATUS }
 
+  belongs_to :dog
+  belongs_to :user
+
 end
