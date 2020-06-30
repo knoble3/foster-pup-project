@@ -15,11 +15,11 @@
       </li>
         <% if user_signed_in? %>
         <li class="nav-item">
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-light"  %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"  %>
         </li>
         <% else %>
         <li class="nav-item">
-        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
         <% end %>
       <li class="nav-item dropdown">
