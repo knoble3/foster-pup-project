@@ -1,4 +1,41 @@
 <div class="container">
+    <div class="row">
+        <h2>Dogs</h2>
+        <% if @dogs != [] %>
+            <div class="dashboard-dog-list">
+                <% @dogs.each do |dog| %>
+                    <div class="dashboard-dog-card card my-3" style="width: 18rem">
+                        <% if dog.photos.any? %>
+                           <div class="dog-picture" style="background-image:url('<%= cl_image_path dog.photos.first.key %>')">
+                           </div>
+                        <% else %>
+                            <div class="dog-picture" style="background-color: grey"></div>
+                        <% end %>
+                        <div class="card-body">
+                            <h5 class="card-title dog-name">
+                                <%= dog.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= dog.description %>
+                            </p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="dashboard-dog-list">
+                <p>No dogs yet!</p>
+                <%= link_to "Add Dog!", new_dog_path %>
+            </div>
+        <% end %>
+    </div>
+    <div class="row">
+        <div class="dashboard-requests-list"></div>
+    </div>
+    <div class="row">
+        <div class="dashboard-reviews-list"></div>
+    </div>
+
     <h1>Dashboard for <%= current_user.email %></h1>
     <h2> Dogs </h2>
     <p><%= @dogs %></p>
@@ -8,3 +45,4 @@
     <p><%= @reviews %></p>
 
 </div>
+

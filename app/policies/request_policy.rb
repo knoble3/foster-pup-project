@@ -4,28 +4,28 @@ class RequestPolicy < ApplicationPolicy
       scope.all
     end
   end
-    def new?
-        user
-    end
+  def new?
+    user
+  end
 
-    def create?
-      return true
-    end
+  def create?
+    return true
+  end
 
-    def edit?
-      record.user == user
-    end
+  def edit?
+    record.user == user
+  end
 
-    def show?
-       # record.user == user
-       record.dog.user == user || record.user == user
-    end
+  def show?
+    # record.user == user
+    record.dog.user == user || record.user == user
+  end
 
-    def update?
-      record.user == user
-    end
+  def update?
+    record.user == user
+  end
 
-    def destroy?
-      record.user == user
-    end
+  def destroy?
+    record.user == user
+  end
 end
