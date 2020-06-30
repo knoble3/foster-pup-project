@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:edit, :update]
+  before_action :set_request, only: [:edit, :update, :show]
 
   def new
     @request = Request.new
@@ -14,6 +14,11 @@ class RequestsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    authorize @request
+    @review = Review.new
   end
 
   def edit
