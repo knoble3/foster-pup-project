@@ -12,7 +12,11 @@
   <% @dogs.take(12).each do |dog| %>
     <%= link_to dog_path(dog) do %>
       <div class="card-trip">
+        <% if dog.photos.first %>
+          <%= cl_image_tag dog.photos.first.key, width: 350, crop: :scale %>
+        <% else %>
         <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+        <% end %>
         <div class="card-trip-infos">
           <div>
             <h2><%= dog.name %></h2>
