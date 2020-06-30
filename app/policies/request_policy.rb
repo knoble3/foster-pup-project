@@ -4,6 +4,9 @@ class RequestPolicy < ApplicationPolicy
       scope.all
     end
   end
+    def new?
+        user
+    end
 
     def create?
       return true
@@ -15,7 +18,7 @@ class RequestPolicy < ApplicationPolicy
 
     def show?
        # record.user == user
-       true
+       record.dog.user == user || record.user == user
     end
 
     def update?

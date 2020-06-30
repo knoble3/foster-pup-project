@@ -2,12 +2,16 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:edit, :update, :show]
 
   def new
+    @dog = Dog.find(params[:dog_id])
     @request = Request.new
     authorize @request
   end
 
   def create
+    @dog = Dog.find(params[:dog_id])
     @request = Request.new(request_params)
+    @request.dog = @dog
+    @request.user = current_user
     authorize @request
     if @request.save
       redirect_to dog_path(@dog)
