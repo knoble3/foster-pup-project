@@ -1,18 +1,56 @@
-<div class="container-top">
-  <h1><%= @dog.name %></h1>
-  <% if policy(@dog).edit? %>
-  <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %>
-  <% end %>
-  <% if policy(@dog).destroy? %>
-  <%= link_to "Delete", dog_path(@dog), method: :delete, class: "btn btn-outline-light" %>
-  <% end %>
-</div>
-
-<div class="content">
-  <div class="photo">
-    <% if @dog.photo.attached? %>
-      <%= cl_image_tag @dog.photo.key, width: 350, crop: :scale %>
-    <% else %>
-      <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded" alt="...">
+<div class="container">
+  <div class="container-top">
+    <h1><%= @dog.name %></h1>
+    <% if policy(@dog).edit? %>
+    <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %>
     <% end %>
+    <% if policy(@dog).destroy? %>
+    <%= link_to "Delete", dog_path(@dog), method: :delete, class: "btn btn-outline-light" %>
+    <% end %>
+  </div>
+
+  <div class="content">
+    <div class="photo">
+
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% if @dog.photos.attached? %>
+          <div class="carousel-item active">
+            <%= cl_image_tag @dog.photos.first.key %>
+          </div>
+          <% @dog.photos[1..-1].each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key %>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="d-block w-100" alt="...">
+          </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <div class="bottom-container">
+        <div class="pup-info">
+          <h3>About Me</h3>
+          <p>Breed: <%= @dog.breed %></p>
+          <p>Age: <%= @dog.age %></p>
+          <p>Description: <%= @dog.description %></p>
+        </div>
+        <div class="links">
+          <div class="make-request">
+            <%= link_to "Request to Foster", new_dog_request_path(@dog), class: "btn btn-outline-dark" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
