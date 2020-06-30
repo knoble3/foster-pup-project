@@ -16,6 +16,7 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to dog_path(@dog)
     else
+      raise
       render :new
     end
   end
