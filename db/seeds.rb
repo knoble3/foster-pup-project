@@ -5,15 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+require 'json'
 
-10.times do
+url = "https://api.thedogapi.com/v1/images/search"
+
+
+5.times do
+
+    data = JSON.parse(open(url).read)
+
+
+    unless data[0]['breeds'].empty?
 
     user = User.create!(email: Faker::Internet.email, password: 'password')
 
-    dog = Dog.create!(name: Faker::Creature::Dog.name, breed: Faker::Creature::Dog.breed, age: rand(1..10), description: Faker::Lorem.sentence(word_count: 10), user: user)
+    dog = Dog.new(name: Faker::Creature::Dog.name, user: user)
+    dog.breed = data[0]['breeds'][0]['name']
+    dog.description = data[0]['breeds'][0]['temperament']
+    # dog.photo.attach(io: URI.open(data[0]['url']), filename: 'dog.png', content_type: 'image/jpg')
+    dog.save
+
 
     request = Request.create!(status: 'pending', content: Faker::Lorem.sentence(word_count:10), start_date: (Time.at(rand * Time.now.to_i)), end_date: Time.now, user: user, dog: dog)
 
+    end
 end
 
 
