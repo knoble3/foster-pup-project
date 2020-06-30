@@ -3,6 +3,10 @@ class RequestPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
+    def new?
+        user
+    end
 
     def create?
       return true
@@ -12,6 +16,11 @@ class RequestPolicy < ApplicationPolicy
       record.user == user
     end
 
+    def show?
+       # record.user == user
+       record.dog.user == user || record.user == user
+    end
+
     def update?
       record.user == user
     end
@@ -19,5 +28,4 @@ class RequestPolicy < ApplicationPolicy
     def destroy?
       record.user == user
     end
-  end
 end

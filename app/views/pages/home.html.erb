@@ -7,6 +7,20 @@
 </div>
 
 
-<% 50.times do %>
-<p> PUPPIES PUPPIES PUPPIES</p>
-<% end %>
+
+<div class="container py-5 card-trip-container ">
+  <% @dogs.take(12).each do |dog| %>
+    <%= link_to dog_path(dog) do %>
+      <div class="card-trip">
+        <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= dog.name %></h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-trip-date">June, 28</h2>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
