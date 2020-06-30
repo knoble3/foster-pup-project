@@ -1,0 +1,14 @@
+<div class="container-top">
+  <h1><%= @dog.name %></h1>
+  <p><%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %></p>
+
+</div>
+
+<div class="content">
+  <div class="photo">
+    <% if @dog.photo.attached? %>
+      <%= cl_image_tag @dog.photo.key, width: 350, crop: :scale %>
+    <% else %>
+      <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded" alt="...">
+    <% end %>
+  </div>
