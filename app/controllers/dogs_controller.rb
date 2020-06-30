@@ -10,14 +10,17 @@ class DogsController < ApplicationController
   end
 
   def show
+    authorize @dog
   end
 
   def new
     @dog = Dog.new
+    authorize @dog
   end
 
   def create
     @dog = Dog.new(dog_params)
+    authorize @dog
     @dog.user = current_user
    if @dog.save
       redirect_to dog_path(@dog)
@@ -27,14 +30,17 @@ class DogsController < ApplicationController
   end
 
   def edit
+    authorize @dog
   end
 
   def update
+    authorize @dog
     @dog.update(dog_params)
     redirect_to dog_path(@dog)
   end
 
   def destroy
+    authorize @dog
     @dog.destroy
     redirect_to root_path
   end

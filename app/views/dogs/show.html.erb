@@ -1,7 +1,11 @@
 <div class="container-top">
   <h1><%= @dog.name %></h1>
-  <p><%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %></p>
-
+  <% if policy(@dog).edit? %>
+  <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %>
+  <% end %>
+  <% if policy(@dog).destroy? %>
+  <%= link_to "Delete", dog_path(@dog), method: :delete, class: "btn btn-outline-light" %>
+  <% end %>
 </div>
 
 <div class="content">
