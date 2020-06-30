@@ -16,11 +16,11 @@
         <div class="carousel-inner">
           <% if @dog.photos.attached? %>
           <div class="carousel-item active">
-            <%= cl_image_tag @dog.photos.first.key %>
+            <%= cl_image_tag @dog.photos.first.key, width: 350, crop: :scale %>
           </div>
           <% @dog.photos[1..-1].each do |photo| %>
           <div class="carousel-item">
-            <%= cl_image_tag photo.key %>
+            <%= cl_image_tag photo.key, width: 350, crop: :scale %>
           </div>
           <% end %>
           <% else %>
