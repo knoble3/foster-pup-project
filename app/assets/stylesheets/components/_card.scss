@@ -25,3 +25,13 @@
 div.col-md-4 a:hover {
   text-decoration: none;
 }
+
+.dashboard-dog-card {
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    .dog-picture {
+        width: 18rem;
+        height: 9rem;
+        background-position: center;
+        background-size: cover;
+    }
+}
