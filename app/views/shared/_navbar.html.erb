@@ -13,13 +13,18 @@
       <li class="nav-item">
         <a class="nav-link" href="<%= dogs_path %>">All Pups</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_dog_path %>">Add Pup</a>
-      </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-light"  %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+        <%= link_to "Login", new_user_session_path %>
+        </li>
+        <% end %>
       <li class="nav-item dropdown">
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/taylormade38" />
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Another action</a>
         </div>
