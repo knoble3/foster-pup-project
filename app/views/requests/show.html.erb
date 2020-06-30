@@ -1,0 +1,15 @@
+<p>Request for:</p>
+<%= @request.dog.name %>
+<p>Start Date:</p>
+<%= @request.start_date %>
+<p>End Date:</p>
+<%= @request.end_date %>
+
+
+<% if @request.end_date < Date.tomorrow && @request.status != "rejected" %>
+    <p>leave a review for <%= @request.user.email %></p>
+    <%= simple_form_for [@request, @review] do |f| %>
+        <%= f.input :content  %>
+        <%= f.submit "Leave Review" %>
+    <% end %>
+<% end %>
