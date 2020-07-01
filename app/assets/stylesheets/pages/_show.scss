@@ -25,3 +25,14 @@ div.bottom-container {
   width: 350px;
   height: 350px;
 }
+
+h3::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #3DCCC7;
+  width: 25%;
+  position: relative;
+  bottom: -6px; /* your padding + border-width */
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
