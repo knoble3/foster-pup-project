@@ -2,7 +2,10 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dogs = Dog.all
+    @dogs = Dog.geocoded
+    @markers = @dogs.map do |dog|
+      {lat: dog.latitude, lng: dog.longitude}
+    end
     query = params["dog-search"]
     if query && query != ""
       @dogs = Dog.where("lower(name) LIKE '%#{query.downcase}%'")
