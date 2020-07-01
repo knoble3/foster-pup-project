@@ -11,29 +11,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-}
-
-/* Add styles to the form container */
-.container {
+  .container {
   position: absolute;
   right: 0;
   margin: 80px;
   max-width: 300px;
   padding: 16px;
   background-color: white;
-}
-
-/* Set a style for the submit button */
-.btn {
-  background-color: $medium-green;
-  color: white;
+};
+  .btn {
   padding: 16px 20px;
-  border: none;
-  cursor: pointer;
   width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
+};
+  .btn:hover {
   opacity: 1;
+};
+
 }
