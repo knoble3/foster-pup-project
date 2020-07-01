@@ -1,7 +1,6 @@
 <div class="main-container">
 <div class="container cards-container" id="dogs">
   <div class="row">
-    <% 8.times do  %>
     <% @dogs.each do |dog| %>
       <div class="col-md-4 mb-3">
         <%= link_to dog_path(dog) do %>
@@ -14,7 +13,6 @@
             </div>
           <% end %>
         </div>
-      <% end %>
       <% end %>
       <% end %>
   </div>
