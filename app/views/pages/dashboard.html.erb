@@ -1,23 +1,44 @@
-<div class="content">
-  <div class="container">
-    <div class="row">
+<div class="container">
+
+  <ul class="nav nav-pills dashboard-nav mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link tabs-underlined active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Requests</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link tabs-underlined" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Upcoming Sessions</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link tabs-underlined" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Past Sessions</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="row">
+      <% @pending_requests.each do |request| %>
       <div class="col-md-4">
-        <div class="card ">
-          <div class="card-header ">
-            <h4>Carlos</h4>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80)">
-          </div>
-          <div class="card-body">
-            <div class="card-info">
-              <i class="fa fa-circle text-info"></i> Status: Pending
-            </div>
-            <hr>
-            <div class="status">
-              <i class="fa fa-clock-o"></i> Request sent 2 days ago
-            </div>
-          </div>
-        </div>
-      </div>
+        <%= render "dogs/card", request: request %>
     </div>
+    <% end %>
   </div>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row">
+      <% @accepted_requests.each do |request| %>
+      <div class="col-md-4">
+        <%= render "dogs/card", request: request %>
+    </div>
+    <% end %>
+  </div>
+  </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="row">
+      <% @past_requests.each do |request| %>
+      <div class="col-md-4">
+        <%= render "dogs/card", request: request %>
+    </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+
 </div>
