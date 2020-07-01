@@ -1,0 +1,16 @@
+ <div class="card ">
+  <div class="card-header ">
+    <h4><%= request.dog.name %></h4>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80)">
+    </div>
+    <div class="card-body">
+      <div class="card-info">
+        <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
+      </div>
+      <hr>
+      <div class="status">
+        <i class=""></i> Request sent <%= request.created_at.strftime("%A, %b %d, %y") %>
+      </div>
+    </div>
+  </div>
+</div>
