@@ -5,11 +5,11 @@ class RequestPolicy < ApplicationPolicy
     end
   end
   def new?
-    user
+    record.dog.user != user
   end
 
   def create?
-    return true
+    record.dog.user != user
   end
 
   def edit?
@@ -27,5 +27,9 @@ class RequestPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def accept?
+    record.dog.user == user && record.status == 'pending'
   end
 end
