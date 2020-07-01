@@ -1,5 +1,17 @@
 <div class="main-container">
-<div class="container cards-container" id="dogs">
+<div class="container left-container">
+  <h3>All Pups</h3>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <label for="search_query">Search for a location:</label>
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+<% end %>
+
+  <div class="container cards-container" id="dogs"></div>
   <div class="row">
     <% @dogs.each do |dog| %>
       <div class="col-md-6 mb-4">
