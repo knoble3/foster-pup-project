@@ -7,6 +7,9 @@
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
       </div>
+      <% if policy(request).accept? %>
+      <%= link_to 'Accept', accept_request_path(request), method: :patch %>
+      <% end %>
       <hr>
       <div class="status">
         <i class=""></i> Sent: <%= request.created_at.strftime("%A, %b %d, %y") %>

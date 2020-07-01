@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:edit, :update, :show]
+  before_action :set_request, only: [:edit, :update, :show, :accept]
 
   def new
     @dog = Dog.find(params[:dog_id])
-    @request = Request.new
+    @request = Request.new(dog: @dog)
     authorize @request
   end
 
@@ -16,7 +16,6 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to dog_path(@dog)
     else
-      raise
       render :new
     end
   end
@@ -36,7 +35,14 @@ class RequestsController < ApplicationController
     redirect_to dog_path(@dog)
   end
 
+  def accept
+    authorize @request
+    @request.update(status: "accepted")
+    redirect_to dashboard_path
+  end
+
   private
+
   def request_params
     params.require(:request).permit(:content, :start_date, :end_date)
   end

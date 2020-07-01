@@ -10,6 +10,7 @@ class DogsController < ApplicationController
   end
 
   def show
+    @request = Request.new(dog: @dog)
     authorize @dog
   end
 

@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  patch '/requests/:id/accept', to: 'requests#accept', as: 'accept_request'
+
   get '/dashboard', to: 'pages#dashboard'
 end
