@@ -1,5 +1,5 @@
 <div class="main-container">
-<div class="container cards-container ">
+<div class="container cards-container" id="dogs">
   <div class="row">
     <% 8.times do  %>
     <% @dogs.each do |dog| %>
@@ -18,5 +18,6 @@
       <% end %>
       <% end %>
   </div>
-  <%= render "shared/map" %>
+</div>
+<%= render "shared/map" %>
 </div>
