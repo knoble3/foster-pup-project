@@ -1,24 +1,30 @@
-form {
-  width: 400px;
-}
 
-h1 {
-  margin-bottom: 20px;
-}
+.bg-img {
+  /* The image used */
+  background-image: url("https://images.unsplash.com/photo-1544197807-bb503430e22d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
 
-.btn {
-  margin-top: 10px;
-  color: #3DCCC7;
-}
+  /* Control the height of the image */
+  min-height: 660px;
 
-div.add_form {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-}
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  .container {
+  position: absolute;
+  right: 0;
+  margin: 80px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+};
+  .btn {
+  padding: 16px 20px;
+  width: 100%;
+};
+  .btn:hover {
+  opacity: 1;
+};
 
-.new-dog {
-  text-align: center;
-  margin-top: 80px;
 }
-
