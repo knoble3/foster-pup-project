@@ -1,0 +1,14 @@
+<div class="container new-form">
+  <h1 class="new-dog">Edit <%= @dog.name %></h1>
+  <div class="add_form">
+  <%= simple_form_for(@dog) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :breed %>
+  <%= f.input :age %>
+  <%= f.input :description %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Finish! 👌🏽", class: "btn btn-outline-dark" %>
+  <% end %>
+  </div>
+</div>
+

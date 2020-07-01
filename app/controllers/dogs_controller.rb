@@ -13,6 +13,7 @@ class DogsController < ApplicationController
   end
 
   def show
+    @request = Request.new(dog: @dog)
     authorize @dog
   end
 
@@ -25,7 +26,7 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     authorize @dog
     @dog.user = current_user
-   if @dog.save
+    if @dog.save
       redirect_to dog_path(@dog)
     else
       render :new

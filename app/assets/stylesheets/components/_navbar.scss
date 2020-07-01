@@ -1,18 +1,38 @@
-.navbar-lewagon {
+.navbar-pupper {
   justify-content: space-between;
   background: transparent;
   padding-top: 0px;
   transition: 0.5s background-color ease;
 }
 
-.navbar-lewagon-white {
-  background-color: white;
-}
-
-.navbar-lewagon .navbar-collapse {
+.navbar-pupper .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-white {
+  background-color: white;
+}
+
+.nav-item .nav-link {
+  color: white;
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+  color: black;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+  .fa {
+    font-size: 36px;
+    margin-top: 4px;
+  }
+}
+
+.title-bar {
+  font-family: 'Dosis', sans-serif;
+  margin-left: 8px;
+  font-size: 2rem;
 }

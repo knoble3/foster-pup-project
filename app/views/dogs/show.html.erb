@@ -2,7 +2,7 @@
   <div class="container-top">
     <h1><%= @dog.name %></h1>
     <% if policy(@dog).edit? %>
-    <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light" %>
+    <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light", id: "edit" %>
     <% end %>
     <% if policy(@dog).destroy? %>
     <%= link_to "Delete", dog_path(@dog), method: :delete, class: "btn btn-outline-light" %>
@@ -48,7 +48,9 @@
         </div>
         <div class="links">
           <div class="make-request">
+            <% if policy(@request).create? %>
             <%= link_to "Request to Foster", new_dog_request_path(@dog), class: "btn btn-outline-dark" %>
+            <% end %>
           </div>
         </div>
       </div>
