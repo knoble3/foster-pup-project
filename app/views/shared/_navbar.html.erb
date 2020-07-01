@@ -1,11 +1,7 @@
-<% if current_page?(dogs_path) %>
-<div class="navbar navbar-expand-sm navbar-light navbar-pupper fixed-top navbar-lewagon-white">
-<% else %>
 <div class="navbar navbar-expand-sm navbar-light navbar-pupper fixed-top">
-<% end %>
-   <%= link_to root_path, class: "link-icon" do %>
-    <p>Pupper <i class="fa fa-paw" aria-hidden="true"></i></p>
-   <% end %>
+  <%= link_to root_path, class: "link-icon" do %>
+    <i class="fa fa-paw" aria-hidden="true"></i><span class="title-bar">Pupper</span>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
