@@ -1,4 +1,8 @@
+<% if current_page?(dogs_path) %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top navbar-lewagon-white">
+<% else %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<% end %>
   <a class="navbar-brand" href="<%= root_path %>">
     <p>Pupper <i class="fa fa-paw" aria-hidden="true"></i></p>
   </a>

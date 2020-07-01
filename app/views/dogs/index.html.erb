@@ -1,8 +1,8 @@
-<div class="index-container">
-<div class="container py-5 cards-container ">
-  <h1>All Pups</h1>
-  <div class=“row” style="display: flex; flex-wrap: wrap;">
 
+<div class="main-container">
+<div class="container cards-container ">
+  <div class="row">
+    <% 8.times do  %>
     <% @dogs.each do |dog| %>
       <div class="col-md-4 mb-3">
         <%= link_to dog_path(dog) do %>
@@ -17,9 +17,10 @@
         </div>
       <% end %>
       <% end %>
+      <% end %>
   </div>
 </div>
-<div class="map-container">
+
   <%= render "shared/map" %>
-</div>
+
 </div>
