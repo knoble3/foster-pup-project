@@ -5,3 +5,11 @@
 @import "request";
 @import "dashboard";
 @import "dogindex";
+
+.btn {
+  background-color: $medium-green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+};
