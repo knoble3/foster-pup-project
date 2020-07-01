@@ -1,20 +1,20 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
-  <a class="navbar-brand" href="<%= root_path %>">
-    <p>Pupper <i class="fa fa-paw" aria-hidden="true"></i></p>
-  </a>
+<div class="navbar navbar-expand-sm navbar-light navbar-pupper fixed-top">
+  <%= link_to root_path, class: "link-icon" do %>
+    <i class="fa fa-paw" aria-hidden="true"></i><span class="title-bar">Pupper</span>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= dashboard_path %>">Dashboard</a>
+      <li class="nav-item">
+        <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= dogs_path %>">All Pups</a>
+        <%= link_to "View Pups", dogs_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= new_dog_path %>">Add Pup</a>
+        <%= link_to "Add Pup", new_dog_path, class: "nav-link" %>
       </li>
         <% if user_signed_in? %>
         <li class="nav-item">
