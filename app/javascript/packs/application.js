@@ -25,7 +25,9 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox'
+import{initAutocomplete} from '../plugins/init_autocomplete'
 import { initUpdateNavbarOnScroll } from "../dom/dynamicNavbar"
+import { initStarRating } from '../plugins/init_star_rating';
 
 
 // Internal imports, e.g:
@@ -34,6 +36,10 @@ import { initUpdateNavbarOnScroll } from "../dom/dynamicNavbar"
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  initMapbox()
-  initUpdateNavbarOnScroll()
+  initMapbox();
+  initAutocomplete();
+  initStarRating();
+  initUpdateNavbarOnScroll();
 });
+
+
