@@ -17,7 +17,7 @@
         <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
         <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
       <% end %>
-      <% if request.status == "completed" %>
+      <% if review && policy(review).create? %>
         <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
       <% end %>
       <hr>

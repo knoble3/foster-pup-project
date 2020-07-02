@@ -19,7 +19,7 @@
         <div class="row">
       <% @pending_requests.each do |request| %>
       <div class="col-md-4">
-        <%= render "dogs/card", request: request %>
+        <%= render "dogs/card", request: request, review: nil %>
     </div>
     <% end %>
   </div>
@@ -28,7 +28,7 @@
         <div class="row">
       <% @accepted_requests.each do |request| %>
       <div class="col-md-4">
-        <%= render "dogs/card", request: request %>
+        <%= render "dogs/card", request: request, review: nil %>
     </div>
     <% end %>
   </div>
@@ -37,7 +37,7 @@
         <div class="row">
       <% @past_requests.each do |request| %>
       <div class="col-md-4">
-        <%= render "dogs/card", request: request %>
+        <%= render "dogs/card", request: request, review: nil %>
     </div>
     <% end %>
   </div>
@@ -46,7 +46,7 @@
         <div class="row">
       <% @incoming_requests.each do |request| %>
       <div class="col-md-4">
-        <%= render "dogs/card", request: request %>
+        <%= render "dogs/card", request: request, review: Review.new(request: request) %>
     </div>
     <% end %>
   </div>
