@@ -3,6 +3,10 @@ class DogsController < ApplicationController
 
   def index
     @dogs = Dog.geocoded
+    if params[:query]
+        @dogs = @dogs.where()
+    else
+    end
     @markers = @dogs.map do |dog|
       {
         lat: dog.latitude,
@@ -10,7 +14,8 @@ class DogsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
       }
     end
-    query = params["dog-search"]
+    query = params[:dog_search]
+
     if query && query != ""
       @dogs = Dog.where("lower(name) LIKE '%#{query.downcase}%'")
     end

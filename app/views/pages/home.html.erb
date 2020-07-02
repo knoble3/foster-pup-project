@@ -12,24 +12,34 @@
 </div>
 
 
-
-<div class="container py-5 card-trip-container ">
-  <% @dogs.take(12).each do |dog| %>
-    <%= link_to dog_path(dog) do %>
-      <div class="card-trip">
-        <% if dog.photos.first %>
-          <%= cl_image_tag dog.photos.first.key, width: 350, crop: :scale %>
-        <% else %>
-        <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+<div class="container bar-and-cards-container d-flex justify-content-center"></div>
+    <div class="search-bar col-6 mx-auto">
+        <%= form_tag dogs_path, method: :get do %>
+            <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Find a dog by breed or location!"
+            %>
         <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= dog.name %></h2>
-            <p><%= dog.breed  %></p>
-          </div>
-          <h2 class="card-trip-age">Age: <%= dog.age %> weeks</h2>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+    </div>
+    <div class="container py-5 card-trip-container">
+          <% @dogs.take(12).each do |dog| %>
+            <%= link_to dog_path(dog) do %>
+              <div class="card-trip">
+                <% if dog.photos.first %>
+                  <%= cl_image_tag dog.photos.first.key, width: 350, crop: :scale %>
+                <% else %>
+                <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+                <% end %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= dog.name %></h2>
+                    <p><%= dog.breed  %></p>
+                  </div>
+                  <h2 class="card-trip-age">Age: <%= dog.age %> weeks</h2>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+    </div>
 </div>
