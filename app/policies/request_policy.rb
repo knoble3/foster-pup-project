@@ -32,4 +32,8 @@ class RequestPolicy < ApplicationPolicy
   def accept?
     record.dog.user == user && record.status == 'pending'
   end
+
+    def reject?
+    record.dog.user == user && record.status == 'pending'
+  end
 end
