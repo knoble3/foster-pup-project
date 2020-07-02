@@ -8,12 +8,14 @@
       <% end %>
     </div>
     <div class="col-md-6 details">
-        <h4><%= @user.name %></h4>
+      <h4><%= @user.name %></h4>
       <p>
         <%= @user.email %> <br>
         Joined: <%= @user.created_at.strftime('%B %Y') %>
       </p>
+      <% if @user == current_user %>
       <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
+      <% end %>
     </div>
   </div>
 </div>
