@@ -11,8 +11,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :users, only: [:show]
+
   patch '/requests/:id/accept', to: 'requests#accept', as: 'accept_request'
   patch '/requests/:id/reject', to: 'requests#reject', as: 'reject_request'
 
   get '/dashboard', to: 'pages#dashboard'
+
 end
