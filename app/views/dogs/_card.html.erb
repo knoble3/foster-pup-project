@@ -13,7 +13,9 @@
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
         </br>
+        <% if request.dog.user != current_user %>
         <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
+        <% end %>
         </br>
         Requested by: <%= link_to request.user.name, user_path(request.user) %>
       </div>
