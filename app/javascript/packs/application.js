@@ -24,7 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import {initMapbox} from '../plugins/init_mapbox'
+import { initMapbox } from '../plugins/init_mapbox'
 import { initUpdateNavbarOnScroll } from "../dom/dynamicNavbar"
 
 

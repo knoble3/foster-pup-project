@@ -8,7 +8,8 @@ class DogsController < ApplicationController
         lng: dog.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { dog: dog }) }
     end
-    query = params["dog-search"]
+    query = params[:dog_search]
+
     if query && query != ""
       @dogs = Dog.where("lower(name) LIKE '%#{query.downcase}%'")
     end
