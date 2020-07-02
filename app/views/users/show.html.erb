@@ -13,6 +13,7 @@
         <%= @user.email %> <br>
         Joined: <%= @user.created_at.strftime('%B %Y') %>
       </p>
+      <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
     </div>
   </div>
 </div>
