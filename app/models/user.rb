@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :dogs, dependent: :destroy
   has_many :requests
   has_many :reviews, through: :requests
+  has_one_attached :avatar
 end
