@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:edit, :update, :show, :accept]
+  before_action :set_request, only: [:edit, :update, :show, :accept] #:reject]
 
   def new
     @dog = Dog.find(params[:dog_id])
@@ -40,6 +40,12 @@ class RequestsController < ApplicationController
     @request.update(status: "accepted")
     redirect_to dashboard_path
   end
+
+  # def reject
+  #   authorize @request
+  #   @request.update(status: "rejected")
+  #   redirect_to dashboard_path
+  # end
 
   private
 
