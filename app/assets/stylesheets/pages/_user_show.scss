@@ -1,0 +1,14 @@
+.container.show{
+  padding: 5%;
+  .img{
+    text-align: center;
+  }
+  .details{
+    border-left: 4px solid $darkest-green;
+  }
+  .details p{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+}
