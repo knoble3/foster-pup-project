@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 img">
       <% if @user.avatar.attached? %>
-      <%= cl_image_tag @user.avatar.key %>
+      <%= cl_image_tag @user.avatar.key, width: 250, crop: :scale %>
       <% else %>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLOpe1MAvkqPwwTU0KLsa6FMh1rAZWg3OR_Q&usqp=CAU" alt="pic">
       <% end %>
