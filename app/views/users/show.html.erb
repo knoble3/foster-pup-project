@@ -1,14 +1,18 @@
-<h1>Profile</h1>
-<h2><%= @user.name %></h2>
-<h5><%= @user.email%></h5>
- <div class="card-dash">
-  <h1>Profile</h1>
-  <div class="card-header ">
-    <h4><i class="fas fa-user"></i><%= @user.name %></h4>
-    <div class="card-body">
-      <div class="card-info">
-      </div>
+<div class="container show">
+  <div class="row">
+    <div class="col-md-6 img">
+      <% if @user.avatar.attached? %>
+      <%= cl_image_tag @user.avatar.key %>
+      <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLOpe1MAvkqPwwTU0KLsa6FMh1rAZWg3OR_Q&usqp=CAU" alt="pic">
+      <% end %>
+    </div>
+    <div class="col-md-6 details">
+        <h4><%= @user.name %></h4>
+      <p>
+        <%= @user.email %> <br>
+        Joined: <%= @user.created_at.strftime('%B %Y') %>
+      </p>
     </div>
   </div>
 </div>
-
