@@ -12,6 +12,8 @@
     <div class="card-body">
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
+        <%= link_to 'See Owner', user_path(request.dog.user) %>
+        <p>Requested by: <%= link_to request.user.name, user_path(request.user) %></p>
       </div>
       <% if policy(request).accept? %>
         <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
