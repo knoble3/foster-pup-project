@@ -4,9 +4,11 @@ class DogsController < ApplicationController
   def index
     @dogs = Dog.geocoded
     @markers = @dogs.map do |dog|
-      { lat: dog.latitude,
+      {
+        lat: dog.latitude,
         lng: dog.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { dog: dog }) }
+        infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
+      }
     end
     query = params["dog-search"]
     if query && query != ""
