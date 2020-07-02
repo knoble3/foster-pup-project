@@ -26,8 +26,12 @@ const initMapbox = () => {
       .addTo(map);
     });
     fitMapToMarkers(map, markers);
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }));
+      var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    });
+
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
   }
 };
 
