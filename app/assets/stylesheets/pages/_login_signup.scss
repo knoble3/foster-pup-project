@@ -10,17 +10,22 @@
 .form-box {
     display: flex;
     margin-top: 150px;
-    margin-bottom: 150px;
-    margin-right: 100px;
-    padding: 100px;
     background-color: rgba(255,255,255,0.84);
     border-radius: 10px;
     @media (max-width: 375px){
         align-items: end;
     }
+    margin-bottom: 10px;
+  h2 {
+    margin-top: 15px;
+  }
 }
 
 .form-item {
     max-width: 100%;
     max-height: 100%;
+}
+
+.sign-up-links {
+  text-align: center;
 }
