@@ -9,6 +9,12 @@
   a:hover {
     color: $darkest-green;
   }
+  &.background-white {
+    background-color: white;
+    .nav-item .nav-link {
+      color: black !important;
+    }
+  }
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -59,6 +65,6 @@
 
 a.nav-dropdown-link {
   padding-left: 8px;
-      color: #07BEB8;
-    display: block;
+  color: #07BEB8;
+  display: block;
 }
