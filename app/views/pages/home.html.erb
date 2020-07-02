@@ -10,15 +10,21 @@
     <% end %>
   </div>
 </div>
-<div class="container">
+<div class="container" id="home-head-container">
     <div class="row">
-        <div class="col-md-8 mx-auto">
+        <div class="home-search-form">
+          <div>
+          <h4>Be a <strong>hero</strong>. Foster a puppy waiting to be adopted.</h4>
+          <p>Browse puppies looking for a nurturing, loving place to call home. When you're ready, click "Request to Foster" on the dog of your choice, and the breeder will get back to you within 3-5 business days. Pupper thanks you for being a hero.</p>
+        </div>
+        <div>
             <%= render "shared/search_form" %>
+          </div>
         </div>
     </div>
 </div>
 
-<div class="container py-5 card-trip-container">
+<div class="py-5 card-trip-container">
   <% @dogs.take(12).each do |dog| %>
     <%= link_to dog_path(dog) do %>
       <div class="card-trip">
