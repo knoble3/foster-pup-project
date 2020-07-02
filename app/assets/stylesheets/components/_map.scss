@@ -2,7 +2,7 @@
   height: calc(100vh - 70px);
   position: sticky;
   margin-top: 70px;
-  width: 50%;
+  width: 60%;
 
 }
 
@@ -20,5 +20,10 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  background: rgb(245,245,245);
+  color: rgb(20, 20, 20);
+  font-family:  'Roboto', sans-serif;
+  padding: 4px;
+  font-weight: lighter;
+  font-size: 15px;
 }
