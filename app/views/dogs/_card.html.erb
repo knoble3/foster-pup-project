@@ -12,29 +12,29 @@
     <div class="card-body">
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
-        </br>
-        <% if request.dog.user != current_user %>
-        <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
-        <% end %>
-        </br>
-        Requested by: <%= link_to request.user.name, user_path(request.user) %>
-      </div>
-      <% if policy(request).accept? %>
-<%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
-        <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
-  View Request
-</button>
+      </br>
+      <% if request.dog.user != current_user %>
+      <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
       <% end %>
-      <% if review && policy(review).create? %>
-      <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
-      <% end %>
-      <hr>
-      <div class="status">
-        <i class=""></i> Sent: <%= request.created_at.strftime("%A, %b %d, %y") %>
-      </div>
-    </div>
+    </br>
+    Requested by: <%= link_to request.user.name, user_path(request.user) %>
   </div>
+  <% if policy(request).accept? %>
+  <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
+  <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
+    View Request
+  </button>
+  <% end %>
+  <% if review && policy(review).create? %>
+  <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
+  <% end %>
+  <hr>
+  <div class="status">
+    <i class=""></i> Sent: <%= request.created_at.strftime("%A, %b %d, %y") %>
+  </div>
+</div>
+</div>
 </div>
 
 <!-- Modal -->
