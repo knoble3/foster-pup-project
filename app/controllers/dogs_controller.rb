@@ -11,6 +11,15 @@ class DogsController < ApplicationController
             infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
           }
        end
+    elsif params[:query] == ""
+        @dogs = Dog.geocoded
+        @markers = @dogs.map do |dog|
+          {
+            lat: dog.latitude,
+            lng: dog.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
+          }
+       end
     else
         @dogs = Dog.geocoded
         @markers = @dogs.map do |dog|
