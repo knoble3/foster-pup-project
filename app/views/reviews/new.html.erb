@@ -1,0 +1,11 @@
+<h1>Write a Review for request.user ??</h1>
+
+<div class="review_form">
+  <%= simple_form_for([@request, @review]) do |f| %>
+  <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+  <%= f.input :content %>
+  <%= f.submit "Submit Review", class: "btn btn-outline-dark" %>
+  <% end %>
+</div>
+
+

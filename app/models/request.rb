@@ -6,7 +6,7 @@ class Request < ApplicationRecord
   belongs_to :dog
   belongs_to :user
 
-  has_many :reviews
+  has_one :review
 
   def request_icon
     case self.status
