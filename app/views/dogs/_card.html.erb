@@ -12,14 +12,16 @@
     <div class="card-body">
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
-        <%= link_to 'See Owner', user_path(request.dog.user) %>
-        <p>Requested by: <%= link_to request.user.name, user_path(request.user) %></p>
+        </br>
+        <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
+        </br>
+        Requested by: <%= link_to request.user.name, user_path(request.user) %>
       </div>
       <% if policy(request).accept? %>
         <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
         <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
+  View Request
 </button>
       <% end %>
       <% if review && policy(review).create? %>
@@ -32,4 +34,30 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Request Info:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Name: <%= request.user.name %>
+        Start Date: <%= request.start_date %>
+        End Date: <%= request.end_date %>
+        Message: <%= request.content %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
