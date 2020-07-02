@@ -1,0 +1,8 @@
+<%= form_tag dogs_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a dog by breed or location!"
+    %>
+    <%= submit_tag "Search", class: "btn btn-outline-light ml-2" %>
+<% end %>
