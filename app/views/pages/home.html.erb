@@ -12,8 +12,8 @@
 </div>
 
 
-<div class="container bar-and-cards-container"></div>
-    <div class="search-bar">
+<div class="container bar-and-cards-container d-flex justify-content-center"></div>
+    <div class="search-bar col-6 mx-auto">
         <%= form_tag dogs_path, method: :get do %>
             <%= text_field_tag :query,
                 params[:query],
@@ -23,7 +23,6 @@
         <% end %>
     </div>
     <div class="container py-5 card-trip-container">
-        <div class="dog-tags">
           <% @dogs.take(12).each do |dog| %>
             <%= link_to dog_path(dog) do %>
               <div class="card-trip">
@@ -42,6 +41,5 @@
               </div>
             <% end %>
           <% end %>
-        </div>
     </div>
 </div>

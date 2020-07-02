@@ -3,6 +3,10 @@ class DogsController < ApplicationController
 
   def index
     @dogs = Dog.geocoded
+    if params[:query]
+        @dogs = @dogs.where()
+    else
+    end
     @markers = @dogs.map do |dog|
       {
         lat: dog.latitude,
