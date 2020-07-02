@@ -6,7 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    record.request.dog.user == user
+    record.request.dog.user == user && record.request.review.nil?
   end
 
 end
