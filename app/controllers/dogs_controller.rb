@@ -2,23 +2,30 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dogs = Dog.geocoded
     if params[:query]
-        @dogs = @dogs.where()
+        @dogs = Dog.search_location_and_breed(params[:query]).geocoded
+        @markers = @dogs.map do |dog|
+          {
+            lat: dog.latitude,
+            lng: dog.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
+          }
+       end
     else
+        @dogs = Dog.geocoded
+        @markers = @dogs.map do |dog|
+          {
+            lat: dog.latitude,
+            lng: dog.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
+          }
+       end
     end
-    @markers = @dogs.map do |dog|
-      {
-        lat: dog.latitude,
-        lng: dog.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { dog: dog })
-      }
-    end
-    query = params[:dog_search]
+    # query = params[:dog_search]
 
-    if query && query != ""
-      @dogs = Dog.where("lower(name) LIKE '%#{query.downcase}%'")
-    end
+    # if query && query != ""
+    #   @dogs = Dog.where("lower(name) LIKE '%#{query.downcase}%'")
+    # end
   end
 
   def show
