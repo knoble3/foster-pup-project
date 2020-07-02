@@ -13,7 +13,7 @@
 
 
 <div class="container bar-and-cards-container d-flex justify-content-center"></div>
-    <div class="search-bar col-6 mx-auto">
+    <div class="row search-bar col-6 mx-auto d-flex col-6">
         <%= form_tag dogs_path, method: :get do %>
             <%= text_field_tag :query,
                 params[:query],
@@ -21,6 +21,7 @@
                 placeholder: "Find a dog by breed or location!"
             %>
         <% end %>
+        <%= submit_tag "Search", class: "btn btn-outline-light" %>
     </div>
     <div class="container py-5 card-trip-container">
           <% @dogs.take(12).each do |dog| %>
