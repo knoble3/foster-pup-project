@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.request = @request
     authorize @review
-    raise
     if @review.save
       redirect_to dashboard_path
     else
