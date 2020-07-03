@@ -1,16 +1,16 @@
 <div class="container show">
   <div class="row">
-    <div class="col-md-6 img">
+    <div class="col-md-4 img">
       <% if @user.avatar.attached? %>
       <%= cl_image_tag @user.avatar.key, width: 250, crop: :scale %>
       <% else %>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLOpe1MAvkqPwwTU0KLsa6FMh1rAZWg3OR_Q&usqp=CAU" alt="pic">
       <% end %>
     </div>
-    <div class="col-md-6 details">
+    <div class="col-md-8 details">
       <h4><%= @user.name %></h4>
-      <p>
-        <%= @user.email %> <br>
+      <p> <%= @user.email %>
+        <br>
         Joined: <%= @user.created_at.strftime('%B %Y') %>
       </p>
       <% if @user == current_user %>
@@ -19,19 +19,51 @@
       <div id="user-reviews">
         <h5><%= @user.name %>'s Reviews</h5>
         <% if @user.reviews.empty? %>
-        <p><%= @user.name %> doesn't have any reviews yet. 😔</p>
+          <p><%= @user.name %> doesn't have any reviews yet. 😔</p>
         <% else %>
-        <% @user.reviews.each do |review| %>
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= review.request.dog.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= review.request.start_date.strftime("%B %e, %Y") %> - <%= review.request.end_date.strftime("%B %e, %Y") %></h6>
-            <p class="card-text"> <%= '⭐️' * review.rating %> <%= review.content %></p>
-          </div>
-        </div>
-        <% end %>
+          <% @user.reviews.each do |review| %>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= review.request.dog.name %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= review.request.start_date.strftime("%B %e, %Y") %> - <%= review.request.end_date.strftime("%B %e, %Y") %></h6>
+                <p class="card-text"> <%= '⭐️' * review.rating %> <%= review.content %></p>
+            </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="users-pups">
+        <h4> <%= @user.name %>'s Pups</h4>
+        <div class="row">
+        <% if @user.dogs.empty? %>
+          <p> <%= @user.name %> doesnt have any pups available to foster yet.</p>
+        <% else %>
+        <div class="users-pups-grid">
+          <% @user.dogs.each do |dog| %>
+            <%= link_to dog_path(dog) do %>
+
+              <div class="card-trip">
+                <% if dog.photos.first %>
+                  <%= cl_image_tag dog.photos.first.key, width: 350, crop: :scale %>
+                <% else %>
+                  <img src="https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" />
+                <% end %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= dog.name %></h2>
+                    <p><%= dog.breed  %></p>
+                  </div>
+                  <h2 class="card-trip-age">Age: <%= dog.age %> weeks</h2>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+        </div>
+      </div>
+    </div>
+</div>
 </div>
