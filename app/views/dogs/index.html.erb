@@ -2,7 +2,6 @@
 <div class="container left-container">
   <h3>All Pups</h3>
   <div id="geocoder" class="geocoder mt-5" style="width: 200px;"></div>
-
   <div class="container cards-container" id="dogs"></div>
   <div class="row">
     <% if @dogs.empty? %>
@@ -25,6 +24,5 @@
     <% end %>
   </div>
 </div>
-<div id="geocoder" class="geocoder mt-5"></div>
 <%= render "shared/map" %>
 </div>
