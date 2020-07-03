@@ -9,6 +9,17 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 
+const toggleCardHighlighting = (event) => {
+  // We select the card corresponding to the marker's id
+
+  const card = document.querySelector(`[data-dog-id="${event.currentTarget.dataset.markerId}"]`);
+  // Then we toggle the class "highlight github" to the card
+
+  card.classList.toggle('highlight');
+  console.log(card)
+}
+
+
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
@@ -40,10 +51,29 @@ const initMapbox = () => {
 
     // markers
     const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
+    const mapMarkers = [];
+    markers.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+      const newMarker = new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+      mapMarkers.push(newMarker)
+      // We use the "getElement" funtion provided by mapbox-gl to access to the marker's HTML an set an id
+      newMarker.getElement().dataset.markerId = marker.id;
+      // Put a microphone on the new marker listening for a mouseenter event
+      newMarker.getElement().addEventListener('mouseenter', (e) => toggleCardHighlighting(e) );
+      // We put a microphone on listening for a mouseleave event
+      newMarker.getElement().addEventListener('mouseleave', (e) => toggleCardHighlighting(e) );
+    });
+
+    // addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    // toggleCardHighlighting(map, markers);
   }
 };
+
 
 
 export { initMapbox };
