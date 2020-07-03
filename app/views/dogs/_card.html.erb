@@ -17,7 +17,9 @@
       <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
       <% end %>
     </br>
-    Requested by: <%= link_to request.user.name, user_path(request.user) %>
+    <% if request.user != current_user %>
+      Requested by: <%= link_to request.user.name, user_path(request.user) %>
+      <% end %>
   </div>
   <% if policy(request).accept? %>
   <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
@@ -48,15 +50,14 @@
         </button>
       </div>
       <div class="modal-body">
-        Name: <%= request.user.name %>
-        Start Date: <%= request.start_date %>
-        End Date: <%= request.end_date %>
-        Message: <%= request.content %>
+        <p>Name: <%= request.user.name %></p>
+        <p>Start Date: <%= request.start_date.strftime("%A, %b %d, %y") %></p>
+        <p>End Date: <%= request.end_date.strftime("%A, %b %d, %y") %></p>
+        <p>Message: <%= request.content %></p>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
