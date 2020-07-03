@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="col-md-8 details">
-      <h4><%= @user.name %></h4>
+      <h4><%= @user.first_name %></h4>
       <p> <%= @user.email %>
         <br>
         Joined: <%= @user.created_at.strftime('%B %Y') %>
@@ -17,9 +17,9 @@
       <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
       <% end %>
       <div id="user-reviews">
-        <h5><%= @user.name %>'s Reviews</h5>
+        <h5><%= @user.first_name %>'s Reviews</h5>
         <% if @user.reviews.empty? %>
-          <p><%= @user.name %> doesn't have any reviews yet. 😔</p>
+          <p><%= @user.first_name %> doesn't have any reviews yet. 😔</p>
         <% else %>
           <% @user.reviews.each do |review| %>
             <div class="card" style="width: 18rem;">
@@ -35,10 +35,10 @@
     </div>
     <div class="row">
       <div class="users-pups">
-        <h4> <%= @user.name %>'s Pups</h4>
+        <h4> <%= @user.first_name %>'s Pups</h4>
         <div class="row">
         <% if @user.dogs.empty? %>
-          <p> <%= @user.name %> doesnt have any pups available to foster yet.</p>
+          <p> <%= @user.first_name %> doesnt have any pups available to foster yet.</p>
         <% else %>
         <div class="users-pups-grid">
           <% @user.dogs.each do |dog| %>

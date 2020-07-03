@@ -19,7 +19,7 @@
       <% end %>
     </br>
     <% if request.user != current_user %>
-      Requested by: <%= link_to request.user.name, user_path(request.user) %>
+      Requested by: <%= link_to request.user.first_name, user_path(request.user) %>
       <% end %>
   </div>
   <% if policy(request).accept? %>
@@ -51,7 +51,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Name: <%= request.user.name %></p>
+        <p>Name: <%= request.user.first_name %></p>
         <p>Start Date: <%= request.start_date.strftime("%A, %b %d, %y") %></p>
         <p>End Date: <%= request.end_date.strftime("%A, %b %d, %y") %></p>
         <p>Message: <%= request.content %></p>
