@@ -4,7 +4,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 });
   map.addControl(new mapboxgl.NavigationControl());
 };
 
@@ -40,13 +40,6 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
 
     fitMapToMarkers(map, markers);
-    var geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    });
-
-
-    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
   }
 };
 
