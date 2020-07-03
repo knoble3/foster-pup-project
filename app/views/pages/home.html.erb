@@ -32,7 +32,7 @@
             <h2><%= dog.name %></h2>
             <p><%= dog.breed  %></p>
           </div>
-          <h2 class="card-trip-age">Age: <%= dog.age %> weeks</h2>
+          <h2 class="card-trip-age">Age: <%= pluralize dog.age, "week" %></h2>
         </div>
       </div>
     <% end %>
