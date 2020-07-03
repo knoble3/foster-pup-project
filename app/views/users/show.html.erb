@@ -16,6 +16,22 @@
       <% if @user == current_user %>
       <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
       <% end %>
+      <div id="user-reviews">
+        <h5><%= @user.name %>'s Reviews</h5>
+        <% if @user.reviews.empty? %>
+        <p><%= @user.name %> doesn't have any reviews yet. 😔</p>
+        <% else %>
+        <% @user.reviews.each do |review| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= review.request.dog.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= review.request.start_date %> - <%= review.request.end_date %></h6>
+            <p class="card-text"> <%= '⭐️' * review.rating %> <%= review.content %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
