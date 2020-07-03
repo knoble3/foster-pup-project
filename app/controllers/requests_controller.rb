@@ -14,7 +14,8 @@ class RequestsController < ApplicationController
     @request.user = current_user
     authorize @request
     if @request.save
-      redirect_to dog_path(@dog)
+      sleep 4
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -38,12 +39,14 @@ class RequestsController < ApplicationController
   def accept
     authorize @request
     @request.update(status: "accepted")
+    sleep 4
     redirect_to dashboard_path
   end
 
   def reject
     authorize @request
     @request.update(status: "rejected")
+    sleep 4
     redirect_to dashboard_path
   end
 
