@@ -16,8 +16,11 @@
       <% if request.status == "accepted" %>
         <%= link_to "View Entry Log", request_path(request) %>
       <% end %>
+    </br>
       <%= request.start_date.strftime("%A, %b %d, %y") %> </br> <%= request.end_date.strftime("%A, %b %d, %y") %>
+      </br>
       <% if request.dog.user != current_user %>
+
       <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
       <% end %>
     </br>
