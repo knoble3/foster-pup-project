@@ -13,9 +13,9 @@
 <div class="container" id="home-head-container">
     <div class="row">
         <div class="home-search-form">
-          <div>
+          <div class="site-info">
           <h4>Be a <strong>hero</strong>. Foster a puppy waiting to be adopted.</h4>
-          <p>Browse puppies looking for a nurturing, loving place to call home. When you're ready, click "Request to Foster" on the dog of your choice, and the breeder will get back to you within 3-5 business days. Pupper thanks you for being a hero.</p>
+          <p>When you choose to become a puppy parent through fostering, you’re choosing to help end pet homelessness, and at Pupper, we're committed to finding homes for puppies everywhere. Become a puppy parent today.</p>
         </div>
         <div id="home-search-container">
             <%= render "shared/search_form" %>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="py-5 card-trip-container">
-  <% @dogs.take(12).each do |dog| %>
+  <% @dogs.each do |dog| %>
     <%= link_to dog_path(dog) do %>
       <div class="card-trip">
         <% if dog.photos.first %>
@@ -38,7 +38,8 @@
             <h2><%= dog.name %></h2>
             <p><%= dog.breed  %></p>
           </div>
-          <h2 class="card-trip-age">Age: <%= pluralize dog.age, "week" %></h2>
+          <h2 class="card-trip-age">Age: <%= pluralize dog.age.size, "week" %></h2>
+
         </div>
       </div>
     <% end %>

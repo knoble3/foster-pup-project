@@ -1,10 +1,14 @@
 <div class="container">
+  <h2 id="id-head">Your Dashboard</h2>
   <ul class="nav nav-pills dashboard-nav mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
       <a class="nav-link tabs-underlined active" id="pills-requests-tab" data-toggle="pill" href="#pills-requests" role="tab" aria-controls="pills-requests" aria-selected="true">Requests I've Made</a>
     </li>
     <li class="nav-item" role="presentation">
       <a class="nav-link tabs-underlined" id="pills-upcoming-tab" data-toggle="pill" href="#pills-upcoming" role="tab" aria-controls="pills-upcoming" aria-selected="false">My Upcoming Fosters</a>
+    </li>
+      <li class="nav-item" role="presentation">
+      <a class="nav-link tabs-underlined" id="pills-upcoming-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-upcoming" aria-selected="false">My Current Fosters</a>
     </li>
     <li class="nav-item" role="presentation">
       <a class="nav-link tabs-underlined" id="pills-past-tab" data-toggle="pill" href="#pills-past" role="tab" aria-controls="pills-past" aria-selected="false">My Past Fosters</a>
@@ -31,10 +35,25 @@
     </div>
     <div class="tab-pane fade" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
       <div class="row">
-        <% if @accepted_requests.empty? %>
+        <% if @upcoming_requests.empty? %>
         <p>You don't have have any upcoming fosters yet. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
         <% else %>
-        <% @accepted_requests.each do |request| %>
+        <% @upcoming_requests.each do |request| %>
+          <%= link_to dog_path(request.dog) do %>
+        <div class="col-md-4">
+          <%= render "dogs/card", request: request, review: nil %>
+          <% end %>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+     <div class="tab-pane fade" id="pills-current" role="tabpanel" aria-labelledby="pills-current-tab">
+      <div class="row">
+        <% if @current_fosters.empty? %>
+        <p>You're not currently fostering any puppies. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
+        <% else %>
+        <% @current_fosters.each do |request| %>
           <%= link_to dog_path(request.dog) do %>
         <div class="col-md-4">
           <%= render "dogs/card", request: request, review: nil %>
@@ -47,7 +66,7 @@
     <div class="tab-pane fade" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
       <div class="row">
         <% if @past_requests.empty? %>
-        <p>You haven't fostered any puppys yet. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
+        <p>You haven't fostered any puppies yet. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
         <% else %>
           <% @past_requests.each do |request| %>
             <%= link_to dog_path(request.dog) do %>

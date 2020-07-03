@@ -28,6 +28,9 @@ import { initMapbox } from '../plugins/init_mapbox'
 import{initAutocomplete} from '../plugins/init_autocomplete'
 import { initUpdateNavbarOnScroll } from "../dom/dynamicNavbar"
 import { initStarRating } from '../plugins/init_star_rating';
+import { initSweetalert } from '../plugins/init_sweetalert';
+
+
 
 
 // Internal imports, e.g:
@@ -40,6 +43,21 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initStarRating();
   initUpdateNavbarOnScroll();
+  initSweetalert('#sweet-alert', {
+  title: "Thank You!",
+  text: "Your request has been submitted! The owner will be in touch with you shortly.",
+  icon: "success"
+});
+  initSweetalert('#sweet-alert-accepted', {
+  title: "Request Accepted!",
+  text: "You've accepted this request.",
+  icon: "success"
+});
+  initSweetalert('#sweet-alert-rejected', {
+  title: "Request Rejected!",
+  text: "You've rejected this request.",
+  icon: "error"
+});
 });
 
 

@@ -2,7 +2,12 @@
 <div class="container left-container">
   <h3>All Pups</h3>
   <div id="geocoder" class="geocoder mt-5" style="width: 200px;"></div>
-
+  <%= render "shared/search_form" %>
+  <% if params[:query].blank? %>
+    <p class="displaying-results">Search for a pup!</p>
+    <% else %>
+    <p class="displaying-results">Displaying search results for '<%= params[:query] %>' ...</p>
+    <% end %>
   <div class="container cards-container" id="dogs"></div>
   <div class="row">
     <% if @dogs.empty? %>
@@ -12,7 +17,7 @@
         <div class="col-md-4 mb-3 dog-card">
           <%= link_to dog_path(dog) do %>
             <% if dog.photos.attached? %>
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dog.photos.first.key, angle: 0 %>)"><%= dog.name %>
+              <div class="card-category" data-dog-id="<%= dog.id %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dog.photos.first.key, angle: 0 %>)"><%= dog.name %>
               </div>
             <% else %>
               <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1568688570940-831467d18af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80)">
@@ -25,6 +30,5 @@
     <% end %>
   </div>
 </div>
-<div id="geocoder" class="geocoder mt-5"></div>
 <%= render "shared/map" %>
 </div>
