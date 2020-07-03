@@ -23,14 +23,14 @@
       <% end %>
   </div>
   <% if policy(request).accept? %>
-  <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
-  <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
+  <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options", id: "sweet-alert-accepted" %>
+  <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options", id: "sweet-alert-rejected" %>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
     View Request
   </button>
   <% end %>
   <% if review && policy(review).create? %>
-  <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
+  <%= link_to 'Write Review', new_request_review_path(request), class: "btn" %>
   <% end %>
   <hr>
   <div class="status">
