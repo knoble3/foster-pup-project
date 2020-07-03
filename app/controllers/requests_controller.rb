@@ -24,6 +24,8 @@ class RequestsController < ApplicationController
   def show
     authorize @request
     @review = Review.new
+    @new_entry = Entry.new
+    @entries = @request.entries
   end
 
   def edit

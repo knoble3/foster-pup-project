@@ -7,6 +7,7 @@ class Request < ApplicationRecord
   belongs_to :user
 
   has_one :review
+  has_many :entries
 
   def request_icon
     case self.status
