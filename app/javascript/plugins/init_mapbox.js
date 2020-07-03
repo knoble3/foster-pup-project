@@ -4,9 +4,20 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 });
   map.addControl(new mapboxgl.NavigationControl());
 };
+
+
+const toggleCardHighlighting = (event) => {
+  // We select the card corresponding to the marker's id
+
+  const card = document.querySelector(`[data-dog-id="${event.currentTarget.dataset.markerId}"]`);
+  // Then we toggle the class "highlight github" to the card
+
+  card.classList.toggle('highlight');
+  console.log(card)
+}
 
 
 const addMarkersToMap = (map, markers) => {
@@ -57,10 +68,12 @@ const initMapbox = () => {
       newMarker.getElement().addEventListener('mouseleave', (e) => toggleCardHighlighting(e) );
     });
 
-    addMarkersToMap(map, markers);
+    // addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    // toggleCardHighlighting(map, markers);
   }
 };
+
 
 
 export { initMapbox };
