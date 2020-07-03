@@ -5,7 +5,7 @@
 }
 
 .sender-messages {
-    background-color: red;
+    background-color: $lighter-blue;
     text-align: right;
     width: 50%;
     align-self: flex-end;
@@ -15,7 +15,7 @@
 }
 
 .recipient-messages {
-    background-color: blue;
+    background-color: $lightest-color;
     text-align: left;
     width: 50%;
     margin-top: 5px;
