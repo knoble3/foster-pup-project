@@ -2,6 +2,12 @@
 <div class="container left-container">
   <h3>All Pups</h3>
   <div id="geocoder" class="geocoder mt-5" style="width: 200px;"></div>
+  <%= render "shared/search_form" %>
+  <% if params[:query].blank? %>
+    <p class="displaying-results">Search for a pup!</p>
+    <% else %>
+    <p class="displaying-results">Displaying search results for '<%= params[:query] %>' ...</p>
+    <% end %>
   <div class="container cards-container" id="dogs"></div>
   <div class="row">
     <% if @dogs.empty? %>
