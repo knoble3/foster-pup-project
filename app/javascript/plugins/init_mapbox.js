@@ -38,12 +38,9 @@ const initMapbox = () => {
     style: 'mapbox://styles/taylormade38/ckc2vz7k409w01jt8s4dtz8tr'
   });
 
-
-
     // markers
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
-
     fitMapToMarkers(map, markers);
   }
 };
