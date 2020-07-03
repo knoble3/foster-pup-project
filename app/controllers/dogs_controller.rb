@@ -4,7 +4,9 @@ class DogsController < ApplicationController
   def index
     @dogs = Dog.geocoded
     if params[:query].present?
-        @dogs = @dogs.search_location_and_breed(params[:query]).geocoded
+      @dogs = @dogs.search_location_and_breed(params[:query]).geocoded
+    else
+      @dogs = Dog.all
     end
 
     @markers = @dogs.map do |dog|
