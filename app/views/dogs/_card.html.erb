@@ -12,29 +12,31 @@
     <div class="card-body">
       <div class="card-info">
         <i class="<%= request.request_icon %>"></i> Status: <%= request.status.capitalize %>
-        </br>
-        <% if request.dog.user != current_user %>
-        <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
-        <% end %>
-        </br>
-        Requested by: <%= link_to request.user.name, user_path(request.user) %>
-      </div>
-      <% if policy(request).accept? %>
-<%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
-        <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
-  View Request
-</button>
+      </br>
+      <% if request.dog.user != current_user %>
+      <%= link_to "View Owner's Profile", user_path(request.dog.user) %>
       <% end %>
-      <% if review && policy(review).create? %>
-      <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
+    </br>
+    <% if request.user != current_user %>
+      Requested by: <%= link_to request.user.first_name, user_path(request.user) %>
       <% end %>
-      <hr>
-      <div class="status">
-        <i class=""></i> Sent: <%= request.created_at.strftime("%A, %b %d, %y") %>
-      </div>
-    </div>
   </div>
+  <% if policy(request).accept? %>
+  <%= link_to 'Accept', accept_request_path(request), method: :patch, class: "request-options" %>
+  <%= link_to 'Reject', reject_request_path(request), method: :patch, class: "request-options" %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-<%= request.id %>">
+    View Request
+  </button>
+  <% end %>
+  <% if review && policy(review).create? %>
+  <%= link_to 'Write Review', new_request_review_path(request), class: "btn btn-outline-success" %>
+  <% end %>
+  <hr>
+  <div class="status">
+    <i class=""></i> Sent: <%= request.created_at.strftime("%A, %b %d, %y") %>
+  </div>
+</div>
+</div>
 </div>
 
 <!-- Modal -->
@@ -48,15 +50,14 @@
         </button>
       </div>
       <div class="modal-body">
-        Name: <%= request.user.name %>
-        Start Date: <%= request.start_date %>
-        End Date: <%= request.end_date %>
-        Message: <%= request.content %>
+        <p>Name: <%= request.user.first_name %></p>
+        <p>Start Date: <%= request.start_date.strftime("%A, %b %d, %y") %></p>
+        <p>End Date: <%= request.end_date.strftime("%A, %b %d, %y") %></p>
+        <p>Message: <%= request.content %></p>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

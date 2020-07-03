@@ -1,8 +1,6 @@
 <div class="background-container col-12 d-flex justify-content-end">
   <div class="container">
     <div class="form-box d-flex flex-column align-items-center col-md-6">
-
-
         <h2 class="justify-content-start">Sign up</h2>
 
         <!-- form row -->
@@ -14,7 +12,7 @@
                             required: true,
                             autofocus: true,
                             input_html: { autocomplete: "email" }%>
-                <%= f.input :name,
+                <%= f.input :first_name,
                             required: true,
                             autofocus: true,
                             input_html: { autocomplete: "name" }%>
@@ -30,7 +28,7 @@
 
               </div>
               <div class="form-actions d-flex justify-content-center">
-                <%= f.button :submit, "Sign up", class:"btn btn-sign-up" %>
+                <%= f.button :submit, "Sign up", class:"btn" %>
               </div>
             <% end %>
         </div>

@@ -12,3 +12,13 @@
   }
 
 }
+
+div.users-pups {
+  margin-top: 50px;
+}
+
+div.users-pups-grid {
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+}
