@@ -47,6 +47,12 @@ class RequestsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def completed
+    authorize @request
+    @request.update(status: "completed")
+    redirect_to dashboard_path
+  end
+
   private
 
   def request_params

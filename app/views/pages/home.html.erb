@@ -25,7 +25,7 @@
 </div>
 
 <div class="py-5 card-trip-container">
-  <% @dogs.take(12).each do |dog| %>
+  <% @dogs.each do |dog| %>
     <%= link_to dog_path(dog) do %>
       <div class="card-trip">
         <% if dog.photos.first %>
@@ -38,7 +38,7 @@
             <h2><%= dog.name %></h2>
             <p><%= dog.breed  %></p>
           </div>
-          <h2 class="card-trip-age">Age: <%= dog.age %> weeks</h2>
+          <h2 class="card-trip-age">Age: <%= pluralize dog.age.size, "week" %>u</h2>
         </div>
       </div>
     <% end %>
