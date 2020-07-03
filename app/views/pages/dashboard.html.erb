@@ -20,8 +20,10 @@
         <p>You haven't requested to foster any pups yet! <%= link_to "Find a puppy to foster here!", dogs_path %></p>
         <% else %>
         <% @pending_requests.each do |request| %>
-        <div class="col-md-4">
+        <%= link_to dog_path(request.dog) do %>
+          <div class="col-md-4">
           <%= render "dogs/card", request: request, review: nil %>
+          <% end %>
         </div>
         <% end %>
         <% end %>
@@ -33,8 +35,10 @@
         <p>You don't have have any upcoming fosters yet. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
         <% else %>
         <% @accepted_requests.each do |request| %>
+          <%= link_to dog_path(request.dog) do %>
         <div class="col-md-4">
           <%= render "dogs/card", request: request, review: nil %>
+          <% end %>
         </div>
         <% end %>
         <% end %>
@@ -46,8 +50,10 @@
         <p>You haven't fostered any puppys yet. <%= link_to "Find a puppy to foster here!", dogs_path %></p>
         <% else %>
           <% @past_requests.each do |request| %>
+            <%= link_to dog_path(request.dog) do %>
           <div class="col-md-4">
           <%= render "dogs/card", request: request, review: nil %>
+          <% end %>
           </div>
         <% end %>
         <% end %>
@@ -59,8 +65,10 @@
         <p>You don't have any requests yet. </p>
         <% else %>
         <% @incoming_requests.each do |request| %>
+          <%= link_to dog_path(request.dog) do %>
         <div class="col-md-4">
           <%= render "dogs/card", request: request, review: Review.new(request: request) %>
+          <% end %>
         </div>
         <% end %>
         <% end %>
