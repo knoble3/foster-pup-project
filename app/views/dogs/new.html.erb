@@ -7,7 +7,7 @@
       <%= f.input :name %>
       <%= f.input :breed %>
       <%= f.input :age %>
-      <%= f.input :description %>
+      <%= f.input :description, label: "My mama says I'm...(description)" %>
       <%= f.input :address %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit "Finish! 👌🏽", class: "btn btn-outline-dark" %>
