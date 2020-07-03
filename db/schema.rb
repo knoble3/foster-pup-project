@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_151257) do
+ActiveRecord::Schema.define(version: 2020_07_03_045638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_07_02_151257) do
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.bigint "request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_id"], name: "index_entries_on_request_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "status", default: "pending"
     t.string "content"
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_151257) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dogs", "users"
+  add_foreign_key "entries", "requests"
+  add_foreign_key "entries", "users"
   add_foreign_key "requests", "dogs"
   add_foreign_key "requests", "users"
   add_foreign_key "reviews", "requests"

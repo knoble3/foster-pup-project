@@ -6,10 +6,31 @@
 <%= @request.end_date %>
 
 
-<% if @request.end_date < Date.tomorrow && @request.status != "rejected" %>
-    <p>leave a review for <%= @request.user.email %></p>
-    <%= simple_form_for [@request, @review] do |f| %>
-        <%= f.input :content  %>
-        <%= f.submit "Leave Review" %>
+<div class="entries-container container overflow-auto">
+    <% if @request.entries.empty? %>
+        <p>Start talking</p>
+    <% else %>
+        <% @request.entries.each do |entry| %>
+            <% if entry.sender == current_user %>
+                <div class="entry sender-messages justify-self-right my-1" id="entry-<%= entry.id %>">
+                    <p><strong><%= entry.sender.first_name %></strong></p>
+                    <p><%= entry.body %></p>
+                </div>
+            <% else %>
+                <div class="entry recipient-messages" id="entry-<%= entry.id %>">
+                    <p><strong><%= entry.sender.first_name %></strong></p>
+                    <p><%= entry.body %></p>
+                </div>
+            <% end %>
+        <% end %>
     <% end %>
-<% end %>
+</div>
+<div class="container mt-0">
+    <div class="entries-field">
+        <%= simple_form_for [@request, @new_entry], remote: true do |f| %>
+            <%= f.input :body, label: "" %>
+            <%= f.submit "Send" %>
+        <% end %>
+    </div>
+</div>
+
