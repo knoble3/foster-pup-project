@@ -13,7 +13,8 @@ class PagesController < ApplicationController
     @requests = current_user.requests
     @pending_requests = @requests.where(status: "pending")
     @past_requests = @requests.where(status: "completed").or(@requests.where(status: "rejected"))
-    @accepted_requests = @requests.where(status: "accepted")
+    @upcoming_requests = @requests.where('status = ? AND start_date > ? AND  end_date > ?', "accepted", Date.today, Date.today)
+    @current_fosters =  @requests.where('status = ? AND start_date < ? AND end_date > ?', "accepted", Date.today, Date.today)
     @incoming_requests = Request.joins(dog: :user).where(users: { id: current_user.id })
     # User's Reviews
     @reviews = Review.joins('JOIN requests r ON reviews.request_id = request.id').where(user: current_user)
