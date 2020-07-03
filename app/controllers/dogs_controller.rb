@@ -4,7 +4,9 @@ class DogsController < ApplicationController
   def index
     @dogs = Dog.geocoded
     if params[:query].present?
-        @dogs = @dogs.search_location_and_breed(params[:query]).geocoded
+      @dogs = @dogs.search_location_and_breed(params[:query]).geocoded
+    else
+      @dogs = Dog.all
     end
 
     @markers = @dogs.map do |dog|
@@ -12,7 +14,8 @@ class DogsController < ApplicationController
         lat: dog.latitude,
         lng: dog.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { dog: dog }),
-        image_url: helpers.asset_url('dogpin')
+        image_url: helpers.asset_url('dogpin'),
+        id: dog.id
       }
    end
   end

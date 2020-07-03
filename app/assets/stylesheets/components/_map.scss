@@ -1,6 +1,7 @@
 #map {
   height: calc(100vh - 100px);
   position: sticky;
+  margin-top: 100px;
   width: 60%;
 }
 
@@ -24,4 +25,8 @@
   padding: 4px;
   font-weight: lighter;
   font-size: 15px;
+}
+
+.highlight {
+  border: 1px solid red;
 }

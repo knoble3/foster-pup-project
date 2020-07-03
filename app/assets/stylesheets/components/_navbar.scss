@@ -3,6 +3,7 @@
   background: transparent;
   padding-top: 0px;
   transition: 0.5s background-color ease;
+
   a {
     color: $darkest-green;
   }
@@ -12,9 +13,13 @@
   &.background-white {
     background-color: white;
     .nav-item .nav-link {
-      color: black !important;
+    color: black !important;
     }
   }
+}
+
+.navbar-bottom {
+  border-bottom: 1px solid #DEDEDE;
 }
 
 .navbar-light .navbar-nav .nav-link {
