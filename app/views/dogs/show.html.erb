@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-top">
-    <h1><%= @dog.name %></h1>
+    <h1>Meet <%= @dog.name %> ~</h1>
     <% if policy(@dog).edit? %>
     <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-outline-light show-button", id: "edit" %>
     <% end %>
@@ -41,10 +41,9 @@
 
       <div class="bottom-container">
         <div class="pup-info">
-          <h3>About Me</h3>
-          <p>Breed: <%= @dog.breed %></p>
-          <p>Age: <%= @dog.age %></p>
-          <p>Description: <%= @dog.description %></p>
+          <h3>About Me  <i class="fas fa-paw"></i></h3>
+          <p>Hi! I'm <%= @dog.name %>. I'm a <%= @dog.age %> week old <%= @dog.breed %> puppy. My mama says I'm <%= @dog.description %>.</p>
+          <p>I'm hoping to be adopted to someday, but I have some growing to do first! I need a foster home so that I can get big and strong for my future family. Will you be my foster?</p>
         </div>
         <div class="links">
           <div class="make-request">
